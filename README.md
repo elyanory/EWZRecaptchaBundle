@@ -299,3 +299,43 @@ If you want to use a custom theme, put your chunk of code before setting the the
     },
 } }) }}
 ```
+
+
+# Multiple reCaptcha on one page with multiple forms
+
+One form with this type code:
+``` php
+<?php
+
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
+
+$form = $app['form.factory']->createBuilder('form')
+    ->add('contact-recaptcha-response', EWZRecaptchaType::class, [
+        'mapped' => false,
+        'constraints' => [
+            new Recaptcha\IsTrue(),
+        ],
+        'attr' => [
+            'options' => [
+                'defer' => true, 
+                'async' => true, 
+            ],
+        ],
+    ])
+```
+
+The others forms with this type code:
+``` php
+<?php
+
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
+
+$form = $app['form.factory']->createBuilder('form')
+    ->add('contact-recaptcha-response', EWZRecaptchaType::class, [
+        'mapped' => false,
+        'constraints' =>[
+            new Recaptcha\IsTrue(),
+        ],
+        'load_api' => false,
+    ])
+```

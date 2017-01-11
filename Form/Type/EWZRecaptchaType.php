@@ -91,6 +91,8 @@ class EWZRecaptchaType extends AbstractType
                 'public_key' => $this->publicKey,
             ));
         }
+
+        $this->vars['load_api'] = $options['load_api'];
     }
 
     /**
@@ -104,6 +106,7 @@ class EWZRecaptchaType extends AbstractType
             'public_key'    => null,
             'url_challenge' => null,
             'url_noscript'  => null,
+            'load_api'      => true,
             'attr'          => array(
                 'options' => array(
                     'theme'           => 'light',
