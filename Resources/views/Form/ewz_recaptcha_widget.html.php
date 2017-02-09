@@ -2,7 +2,6 @@
     <?php if (!$ewz_recaptcha_ajax): ?>
         <?php if ($load_api): ?>
         <script type="text/javascript" src="<?php echo $url_challenge ?>&amp;onload=captchaCallback&amp;render=explicit" <?php echo $attr['options']['defer'] ?> <?php echo $attr['options']['async'] ?>></script>
-        <?php endif; ?>
         <script type="text/javascript">
             var captchaCallback = function() {
                 var captchas = document.getElementsByClassName('g-recaptcha');
@@ -15,6 +14,7 @@
                 }
             };
         </script>
+        <?php endif; ?>
         <div class="g-recaptcha" data-theme="<?php echo $attr['options']['theme'] ?>" data-size="<?php echo $attr['options']['size'] ?>" data-type="<?php echo $attr['options']['type'] ?>" data-sitekey="<?php echo $public_key ?>" <?php if (isset($attr['options']['callback'])): ?>data-callback="<?php echo $attr['options']['callback'] ?>"<?php endif ?> <?php if (isset($attr['options']['expiredCallback'])): ?>data-expired-callback="<?php echo $attr['options']['expiredCallback'] ?>"<?php endif ?>></div>
         <noscript>
             <div style="width: 302px; height: 352px;">

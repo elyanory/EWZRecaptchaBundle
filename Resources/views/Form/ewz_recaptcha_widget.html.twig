@@ -4,19 +4,19 @@
             {% if not form.vars.ewz_recaptcha_ajax %}
                 {% if load_api %}
                     <script type="text/javascript" src="{{ url_challenge }}&amp;onload=captchaCallback&amp;render=explicit" {{ attr.options.defer }} {{ attr.options.async }}></script>
-                {% endif %}
-                <script type="text/javascript">
-                    var captchaCallback = function() {
-                        var captchas = document.getElementsByClassName('g-recaptcha');
+                    <script type="text/javascript">
+                        var captchaCallback = function() {
+                            var captchas = document.getElementsByClassName('g-recaptcha');
 
-                        for (var i = 0; i < captchas.length; i++) {
-                            grecaptcha.render(captchas[i], {
-                                'sitekey': '{{ form.vars.public_key }}',
-                                'theme': '{{ attr.options.theme }}'
-                            });
-                        }
-                    };
-                </script>
+                            for (var i = 0; i < captchas.length; i++) {
+                                grecaptcha.render(captchas[i], {
+                                    'sitekey': '{{ form.vars.public_key }}',
+                                    'theme': '{{ attr.options.theme }}'
+                                });
+                            }
+                        };
+                    </script>
+                {% endif %}
 
                 <div class="g-recaptcha" data-theme="{{ attr.options.theme }}" data-size="{{ attr.options.size }}" data-type="{{ attr.options.type }}" data-sitekey="{{ form.vars.public_key }}" {% if attr.options.expiredCallback is defined %}data-expired-callback="{{ attr.options.expiredCallback }}"{% endif %}></div>
 
