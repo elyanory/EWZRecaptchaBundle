@@ -92,7 +92,7 @@ class EWZRecaptchaType extends AbstractType
             ));
         }
 
-        $this->vars['load_api'] = $options['load_api'];
+        $view->vars['load_api'] = $options['load_api'];
     }
 
     /**
